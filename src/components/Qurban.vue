@@ -43,7 +43,7 @@ export default {
     items: [
         { 
           productId: 1,
-          productTitle : "Qurban Kambing Standar",
+          productTitle : "Qurban Kambing Tipe A (Premium)",
           productSubTtile : "Kami pilihkan kambing ukuran standar",
           productFeatures : ["Kambing / Domba", "Berat +- 20-30 KG", "Usia 1-2 Tahun"],
           price : "1.500.000",
@@ -52,7 +52,7 @@ export default {
         },
         { 
           productId: 2,
-          productTitle: "Qurban Kambing Medium",
+          productTitle: "Qurban Kambing B (Medium)",
           productSubTtile: "Kami pilihkan kambing ukuran medium",
           productFeatures : ["Kambing / Domba", "Berat +- 30-45 KG", "Usia 1-2 Tahun"],
           price : "1.700.000",
@@ -62,7 +62,7 @@ export default {
         },
         { 
           productId: 3,
-          productTitle: "Qurban kambing Premium",
+          productTitle: "Qurban kambing C (Standar)",
           productSubTtile: "Kami pilihkan kambing ukuran besar",
           productFeatures : ["Kambing / Domba", "Berat +- 40-50 KG", "Usia 1-3 Tahun"],
           price : "3.000.000",
