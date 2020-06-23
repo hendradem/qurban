@@ -1,36 +1,24 @@
 <template>
   <div id="app">
     <Navbar/>
-    <Header/>
-    <Qurban/>
-    <Step/>
-    <Request/>
+    <router-view>  </router-view>
     <Footer/>
   </div>
 </template>
 
 <script>
 
-import Vue from 'vue'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
-
+import '@/vendor.js'
 import Navbar from './components/Navbar.vue'
-import Header from './components/Header.vue'
-import Qurban from './components/Qurban.vue'
-import Step from './components/Step.vue'
-import Request from './components/Request.vue'
 import Footer from './components/Footer.vue'
+
 
 
 export default {
   name: 'App',
   components: {
-    Navbar, Header, Qurban, Step, Request, Footer
+    Navbar, Footer
   }
 }
 </script>
