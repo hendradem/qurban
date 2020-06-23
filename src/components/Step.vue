@@ -54,6 +54,6 @@ export default {
         height: 400px;
     }
     .step-container {
-        background-color: #eaeaea;
+        background-color: #f3f1ff;
     }
 </style>

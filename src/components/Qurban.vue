@@ -16,14 +16,15 @@
                                 <h4 class="px-2"> {{ item.productTitle }} </h4>
                                 <p> {{ item.productSubTitle }} </p>
                             </div>
-                            <div class="package-features pt-2">
-                                <ul class="list-group list-group-flush px-5">
-                                  <li v-for="feature in item.productFeatures" :key="feature" class="list-group-item p-2"> <fa-icon :icon="['fas', 'check']" style="color:green;" /> <span class="pl-1 font-weight-medium feature-text"> {{ feature }} </span> </li>
-                                </ul>
-                            </div>
-                            <div class="package-price text-center mt-4">
+                            <div class="package-price text-center mt-3">
                                 <h3 class="pricing-text"> <small> Rp. </small> {{ item.price }} </h3>  
                             </div>
+                            <div class="package-features mt-5 pt-2">
+                                <ul class="list-group list-group-flush px-5">
+                                  <li v-for="feature in item.productFeatures" :key="feature" class="list-group-item border-0 p-1"> <fa-icon :icon="['fas', 'check']" style="color:green;" /> <span class="pl-1 font-weight-medium feature-text"> {{ feature }} </span> </li>
+                                </ul>
+                            </div>
+                            
                             <div class="package-footer mt-5">
                                 <a v-bind:href="item.checkout" class="btn btn-info btn-block mx-auto btn-pesan"> Pesan Hewan </a>
                             </div>
@@ -87,11 +88,11 @@ export default {
   .qurbanHeading {
     text-align: center;
     margin-bottom: 50px;
-    color: #1f0a79;
+    color: #04122d;
   }
   .choiceHeading {
     font-weight: bold;
-    color: #1f0a79;
+    color: #04122d;
   }
   .my-card {
     border: none;
@@ -109,11 +110,11 @@ export default {
   .package-title {
     text-align: center;
   } .package-title > h4 {
-    color: #1f0a79;
+    color: #505050;
     font-weight: 800;
   }
   .feature-text {
-    color: #5a41c7;
+    color: #505050;
   }
   .pricing-text {
     font-weight: 800;
