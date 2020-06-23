@@ -12,13 +12,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
+                        <router-link class="nav-link" to="/"> HOME </router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">DOKUMENTASI</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">PROPOSAL PENYALURAN</a>
+                        <router-link class="nav-link" to="dokumentasi"> DOKUMENTASI </router-link>
                     </li>
                     
                 </ul>

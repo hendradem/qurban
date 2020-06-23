@@ -10,12 +10,12 @@ export default new Router({
     routes : [
         { 
           path : '/', 
-          name : 'Home',
+          name : 'home',
           component : Home
         },
         { 
           path : '/dokumentasi', 
-          name : 'Dokumentasi',
+          name : 'dokumentasi',
           component : Documentation
         }
     ],
