@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-warning">
+    <div class="step-container">
         <div class="qurbanHeading">
               <h3 class="choiceHeading pt-5"> Step-step pemesanan </h3>
               <p>
@@ -48,9 +48,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .how-to {
         width: 100%;
         height: 400px;
+    }
+    .step-container {
+        background-color: #eaeaea;
     }
 </style>
