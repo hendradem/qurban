@@ -4,6 +4,7 @@
     <Header/>
     <Qurban/>
     <Step/>
+    <Request/>
     <Footer/>
   </div>
 </template>
@@ -22,13 +23,14 @@ import Navbar from './components/Navbar.vue'
 import Header from './components/Header.vue'
 import Qurban from './components/Qurban.vue'
 import Step from './components/Step.vue'
+import Request from './components/Request.vue'
 import Footer from './components/Footer.vue'
 
 
 export default {
   name: 'App',
   components: {
-    Navbar, Header, Qurban, Step, Footer
+    Navbar, Header, Qurban, Step, Request, Footer
   }
 }
 </script>
@@ -39,5 +41,6 @@ export default {
   body {
     font-family: 'Nunito Sans', sans-serif;
     background-color: #fff;
+    height: 5500px;
   }
 </style>
