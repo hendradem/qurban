@@ -13,7 +13,7 @@
               <b-tab title="Qurban Kambing" active>
                 <b-card-text>
                   
-                  <div class="row pt-4">
+                  <div class="row pt-5">
                     <div v-for="item in items" :key="item.productTitle" class="col-md-4">
                       <div class="card my-card">
                           <div class="card-body">
@@ -41,7 +41,7 @@
               </b-tab>
               <b-tab title="Qurban Sapi">
                 <b-card-text>
-                    <div class="row pt-4">
+                    <div class="row pt-5">
                     <div v-for="item in items" :key="item.productTitle" class="col-md-4">
                       <div class="card my-card">
                           <div class="card-body">
@@ -125,11 +125,11 @@ export default {
   .qurbanHeading {
     text-align: center;
     margin-bottom: 50px;
-    color: #04122d;
+    color: #505050;
   }
   .choiceHeading {
     font-weight: bold;
-    color: #04122d;
+    color: #505050;
   }
   .my-card {
     border: 1px solid #dddddd;
