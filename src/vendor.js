@@ -7,14 +7,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // font awesome
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faUserSecret, faSpinner, faCheck, faArrowDown} from '@fortawesome/free-solid-svg-icons'
+import {faUserSecret, faSpinner, faCheck, faArrowDown, faCheckCircle} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueCountdown from '@chenfengyuan/vue-countdown';
 
 
 // adding the library
 
-library.add(faUserSecret, faSpinner, faCheck, faArrowDown)
+library.add(faUserSecret, faSpinner, faCheck, faArrowDown, faCheckCircle)
 Vue.component('fa-icon', FontAwesomeIcon);
 Vue.component(VueCountdown.name, VueCountdown);
 
