@@ -6,7 +6,7 @@
                 Kami buat se sederhana mungkin dalam pemesanan hewan qurban. Silahkan lihat step dibawah ini
               </p>
         </div>
-        <div class="container py-5">
+        <div class="container py-2 pb-5">
             <div class="row">
                 <div class="col-md-3 mb-2">
                     <div class="card bg-transparent border-0">
