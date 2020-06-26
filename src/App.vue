@@ -29,6 +29,5 @@ export default {
   body {
     font-family: 'Nunito Sans', sans-serif;
     background-color: #fff;
-    height: 5500px;
   }
 </style>

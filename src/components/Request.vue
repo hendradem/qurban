@@ -1,5 +1,5 @@
 <template name="Request">
-    <div class="container">
+    <div class="container pb-5">
          <div class="qurbanHeading">
               <h3 class="choiceHeading pt-5"> Info penyaluran daging qurban </h3>
               <p>
@@ -11,8 +11,7 @@
                 <img class="img-fluid" src="../assets/images/request.png" />
            </div>
            <div class="col-md-7 d-flex justify-content-center">
-               
-                   <div class="row">
+                <div class="row">
                    <div class="card card-penyaluran bg-warning card-p-1 p-3 border-0">
                         <div class="card-body">
                             <h4 class="card-title"> <strong> Pengajuan Penyaluran </strong> </h4>
@@ -31,8 +30,7 @@
                             <a href="" class="btn btn-default btn-penyaluran btn-block mt-4"> Lihat dokumentasi </a>
                         </div>
                     </div>
-                    </div>
-   
+                </div>
            </div>
        </div>
     </div>

@@ -14,19 +14,19 @@
                 <b-card-text>
                   
                   <div class="row pt-5">
-                    <div v-for="item in items" :key="item.productTitle" class="col-md-4">
+                    <div v-for="item in kambing" :key="item.productTitle" class="col-md-4">
                       <div class="card my-card">
                           <div class="card-body">
-                              <div class="package-title pt-4">
+                              <div class="package-title px-3 pt-4">
                                   <h4> {{ item.productTitle }} </h4>
                                   <p> {{ item.productSubTitle }} </p>
                               </div>
                               <div class="package-price text-center mt-3">
-                                  <h4 class="pricing-text"> Rp.  {{ item.price }} </h4>  
+                                  <h4 class="pricing-text">   {{ item.price }} </h4>  
                               </div>
                               <div class="package-features mt-4">
                                   <ul class="list-unstyled align-content-center feature-list">
-                                      <li v-for="feature in item.productFeatures" :key="feature" class="p-1"> <fa-icon :icon="['fas', 'check-circle']" style="color:green;" /> <span class="pl-1 font-weight-medium feature-text"> {{ feature }} </span> </li>
+                                      <li v-for="feature in item.productFeatures" :key="feature" class="p-1"> <i class="fas fa-check-circle" style="color: green;"></i> <span class="pl-1 font-weight-medium feature-text"> {{ feature }} </span> </li>
                                   </ul>
                               </div>        
                               <div class="package-footer mt-5">
@@ -42,19 +42,19 @@
               <b-tab title="Qurban Sapi">
                 <b-card-text>
                     <div class="row pt-5">
-                    <div v-for="item in items" :key="item.productTitle" class="col-md-4">
+                    <div v-for="item in sapi" :key="item.productTitle" class="col-md-4">
                       <div class="card my-card">
                           <div class="card-body">
-                              <div class="package-title pt-4">
+                              <div class="package-title px-3 pt-4">
                                   <h4> {{ item.productTitle }} </h4>
                                   <p> {{ item.productSubTitle }} </p>
                               </div>
                               <div class="package-price text-center mt-3">
-                                  <h4 class="pricing-text"> Rp.  {{ item.price }} </h4>  
+                                  <h4 class="pricing-text"> - {{ item.price }} </h4>  
                               </div>
                               <div class="package-features mt-4">
                                   <ul class="list-unstyled align-content-center feature-list">
-                                      <li v-for="feature in item.productFeatures" :key="feature" class="p-1"> <fa-icon :icon="['fas', 'check-circle']" style="color:green;" /> <span class="pl-1 font-weight-medium feature-text"> {{ feature }} </span> </li>
+                                      <li v-for="feature in item.productFeatures" :key="feature" class="p-1"> <i class="fas fa-check-circle" style="color: green;"></i> <span class="pl-1 font-weight-medium feature-text"> {{ feature }} </span> </li>
                                   </ul>
                               </div>        
                               <div class="package-footer mt-5">
@@ -78,34 +78,65 @@ export default {
   name: 'Qurban',
   data: function () {
   return {
-    items: [
+    kambing : [
         { 
           productId: 1,
           productTitle : "Qurban Kambing Tipe A (Premium)",
           productSubTtile : "Kami pilihkan kambing ukuran standar",
-          productFeatures : ["Kambing / Domba", "Berat +- 20-30 KG", "Usia 1-2 Tahun"],
-          price : "1.500.000",
+          productFeatures : ["Kambing / Domba", "Berat > 38 KG", "Usia 2 Tahun"],
+          price : "3.100.000 - 3.300.000",
           image : [require("@/assets/images/hero1.jpg")],
-          checkout : "http://checkout.masjidpogungraya.com/qurban-kambing-standar"     
+          checkout : "https://qurbanmpdmpr.orderonline.id/qurban-kambing-tipe-a"     
         },
         { 
           productId: 2,
           productTitle: "Qurban Kambing Tipe B (Medium)",
           productSubTtile: "Kami pilihkan kambing ukuran medium",
-          productFeatures : ["Kambing / Domba", "Berat +- 30-45 KG", "Usia 1-2 Tahun"],
-          price : "1.700.000",
+          productFeatures : ["Kambing / Domba", "Berat > 33 KG", "Usia 1.5 Tahun"],
+          price : "2.800.000 - 3.000.000",
           image: [require("@/assets/images/hero3.jpg")],
-          checkout : "http://checkout.masjidpogungraya.com/qurbankambingmedium"
+          checkout : "https://qurbanmpdmpr.orderonline.id/qurban-kambing-b"
           
         },
         { 
           productId: 3,
           productTitle: "Qurban kambing Tipe C (Standar)",
           productSubTtile: "Kami pilihkan kambing ukuran besar",
-          productFeatures : ["Kambing / Domba", "Berat +- 40-50 KG", "Usia 1-3 Tahun"],
-          price : "3.000.000",
+          productFeatures : ["Kambing / Domba", "Berat > 28 KG", "Usia > 1 Tahun"],
+          price : "2.600.000 - 2.700.000",
           image: [require("@/assets/images/hero3.jpg")],
-          checkout : "http://checkout.masjidpogungraya.com/kurban-kambing-premium"
+          checkout : "https://qurbanmpdmpr.orderonline.id/qurban-kambing-c"
+          
+        },
+    ],
+    sapi : [
+        { 
+          productId: 1,
+          productTitle : "Qurban Sapi Tipe A (Premium)",
+          productSubTtile : "Kami pilihkan kambing ukuran standar",
+          productFeatures : ["Sapi Jantan", "Berat 380-400 KG", "Usia > 2 Tahun"],
+          price : "3.300.000 /orang  23.100.000 /sapi",
+          image : [require("@/assets/images/hero1.jpg")],
+          checkout : "https://qurbanmpdmpr.orderonline.id/qurban-sapi-a"     
+        },
+        { 
+          productId: 2,
+          productTitle: "Qurban Sapi Tipe B (Medium)",
+          productSubTtile: "Kami pilihkan kambing ukuran medium",
+          productFeatures : ["Sapi Jantan", "Berat 360-380 KG", "Usia > 2 Tahun"],
+          price : "3.150.000 /orang  22.050.000 /sapi",
+          image: [require("@/assets/images/hero3.jpg")],
+          checkout : "https://qurbanmpdmpr.orderonline.id/qurban-sapi-b"
+          
+        },
+        { 
+          productId: 3,
+          productTitle: "Qurban Sapi Tipe C (Standar)",
+          productSubTtile: "Kami pilihkan kambing ukuran besar",
+          productFeatures : ["Sapi Jantan", "Berat 340-360 KG", "Usia > 2 Tahun"],
+          price : "3.000.000 /orang  21.000.000 /sapi",
+          image: [require("@/assets/images/hero3.jpg")],
+          checkout : "https://qurbanmpdmpr.orderonline.id/qurban-sapi-c"
           
         },
     ]

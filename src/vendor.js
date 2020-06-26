@@ -6,16 +6,17 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // font awesome
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {faUserSecret, faSpinner, faCheck, faArrowDown, faCheckCircle} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
+
+// countDown
 import VueCountdown from '@chenfengyuan/vue-countdown';
 
 
 // adding the library
 
-library.add(faUserSecret, faSpinner, faCheck, faArrowDown, faCheckCircle)
-Vue.component('fa-icon', FontAwesomeIcon);
+// library.add(faUserSecret, faSpinner, faCheck, faArrowDown, faCheckCircle, faHeart)
+// Vue.component('fa-icon', FontAwesomeIcon);
 Vue.component(VueCountdown.name, VueCountdown);
 
 
