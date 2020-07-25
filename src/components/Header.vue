@@ -42,8 +42,14 @@
 </template>
 
 <script>
+    
     export default {
-        name : "Header"
+        name : "Header",
+        data(){
+            return {
+                _dayNow : new Date(),
+            }
+        }
     }
 </script>
 
