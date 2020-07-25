@@ -47,7 +47,7 @@
         name : "Header",
         data(){
             return {
-                _dayNow : new Date(),
+               
             }
         }
     }
