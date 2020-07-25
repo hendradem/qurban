@@ -6,7 +6,7 @@
                 <div class="col-md-5">
                     <h4 class="heading-text align-middle mt-5 mb-4"> Website Qurban <br> Masjid Pogung Dalangan <br> Masjid Pogung Raya </h4>
                     <p class="heading-paragraph"> Layanan pemesanan hewan qurban dari panitia qurban Masjid Pogung Dalangan - Masjid Pogung Raya </p>
-                     <countdown :time="18 * 24 * 60 * 60 * 1000">
+                     <!-- <countdown :time="18 * 24 * 60 * 60 * 1000">
                         <template slot-scope="props">
                             <div class="count-down mt-5">
                                 <p class="count-down-text text-white">Menuju hari raya qurban</p>
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </template>
-                    </countdown>
+                    </countdown> -->
 
                 </div>
 
@@ -71,7 +71,7 @@
         color: #fff;
         font-size: 20px;
     }
-    .timer-col {
+    /* .timer-col {
         background-color: #fff;
         margin: 10px;
         padding: 12px;
@@ -85,6 +85,6 @@
     }
     .count-down-text {
         font-size: 20px;
-    }
+    } */
     
 </style>
