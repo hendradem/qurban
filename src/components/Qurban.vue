@@ -39,7 +39,7 @@
 
                 </b-card-text>
               </b-tab>
-              <b-tab title="Qurban Sapi">
+              <b-tab title="Qurban Sapi (Sudah Penuh)">
                 <b-card-text>
                     <div class="row pt-5">
                     <div v-for="item in sapi" :key="item.productTitle" class="col-md-4">
@@ -50,7 +50,7 @@
                                   <p> {{ item.productSubTitle }} </p>
                               </div>
                               <div class="package-price text-center mt-3">
-                                  <h4 class="pricing-text"> - {{ item.price }} </h4>  
+                                  <h4 class="pricing-text">  </h4>  
                               </div>
                               <div class="package-features mt-4">
                                   <ul class="list-unstyled align-content-center feature-list">
@@ -58,7 +58,7 @@
                                   </ul>
                               </div>        
                               <div class="package-footer mt-5">
-                                  <a v-bind:href="item.checkout" class="btn btn-info btn-block mx-auto btn-pesan"> Pesan Hewan </a>
+                                  <a v-bind:href="item.checkout" class="btn btn-info btn-block mx-auto btn-pesan disabled"> Pesan Hewan </a>
                               </div>
                           </div>                     
                       </div>                       
