@@ -14,24 +14,40 @@
 
     <div class="shohibul-qurban mt-4">
         <div class="container">
-            <div class="row bg-dark p-0">
-                <div class="col-md-4">
-                    <b-card>
-                        <b-card-title>Title</b-card-title>
-                        <b-card-text>
-                            This card has supporting text below as a natural lead-in to additional content.
-                        </b-card-text>
-                        <b-card-text class="small text-muted">Last updated 3 mins ago</b-card-text>
-                    </b-card>
-                    <b-card>
-                        <b-card-title>Title</b-card-title>
-                        <b-card-text>
-                            This card has supporting text below as a natural lead-in to additional content.
-                        </b-card-text>
-                        <b-card-text class="small text-muted">Last updated 3 mins ago</b-card-text>
-                    </b-card>
-                </div>
+           <div class="row">
+            <b-card
+                title="Card Title"
+                img-src="https://picsum.photos/600/300/?image=25"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="max-width: 20rem;"
+                class="mb-2 m-2"
+            >
+                <b-card-text>
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+                </b-card-text>
+
+                <b-button href="#" variant="primary">Go somewhere</b-button>
+            </b-card>
+            <b-card
+                title="Card Title"
+                img-src="https://picsum.photos/600/300/?image=25"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="max-width: 20rem;"
+                class="mb-2 m-2"
+            >
+                <b-card-text>
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+                </b-card-text>
+
+                <b-button href="#" variant="primary">Go somewhere</b-button>
+            </b-card>
             </div>
+
+            
         </div>
     </div>
 

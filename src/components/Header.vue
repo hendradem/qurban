@@ -1,90 +1,78 @@
 <template>
   <div>
-      <header>
-          <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <h4 class="heading-text align-middle mt-5 mb-4"> Website Qurban <br> Masjid Pogung Dalangan <br> Masjid Pogung Raya </h4>
-                    <p class="heading-paragraph"> Layanan pemesanan hewan qurban dari panitia qurban Masjid Pogung Dalangan - Masjid Pogung Raya </p>
-                     <!-- <countdown :time="18 * 24 * 60 * 60 * 1000">
-                        <template slot-scope="props">
-                            <div class="count-down mt-5">
-                                <p class="count-down-text text-white">Menuju hari raya qurban</p>
-                                <div class="row">
-                                    <div class="timer-col d-flex justify-content-center align-items-center">
-                                        <span class="timer-text my-auto mr-1">  {{ props.days }} </span> Hari
-                                    </div>
-                                    <div class="timer-col d-flex justify-content-center align-items-center">
-                                        <span class="timer-text my-auto mr-1"> {{ props.hours }} </span> Jam
-                                    </div>
-                                    <div class="timer-col d-flex justify-content-center align-items-center">
-                                        <span class="timer-text my-auto mr-1"> {{ props.minutes }} </span> Menit
-                                    </div>
-                                    <div class="timer-col d-flex justify-content-center align-items-center">
-                                        <span class="timer-text my-auto mr-1"> {{ props.seconds }} </span> Detik
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                    </countdown> -->
-
-                </div>
-
-                <div class="col-md-7">
-                    <img width="800" class="img-fluid" src="../assets/images/qurbanhero2.png" />
-                </div>
-
-
+    <div class="container">
+      <div class="row p-5">
+        <div class="col-sm-6">
+          <div class="card product-card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <strong>Qurban Sapi</strong>
+              </h5>
+              <p class="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+              <img
+                src="https://media.flaticon.com/dist/min/img/home/cards-products-section/icons.png"
+                alt=""
+              />
             </div>
           </div>
-      </header>
+        </div>
+        <div class="col-sm-6">
+          <div class="card product-card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <strong>Qurban Kambing</strong>
+              </h5>
+              <p class="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+              <img
+                src="https://media.flaticon.com/dist/min/img/home/cards-products-section/stickers.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-    
-    export default {
-        name : "Header",
-        data(){
-            return {
-               
-            }
-        }
-    }
+export default {
+  name: "Header",
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>
-    header {
-        background-color: #6730e3;
-        height: auto;
-        margin-bottom: 50px;
-        padding-top: 100px;
-        padding-bottom: 50px;
-    }
-    .heading-text {
-        font-weight: 800;
-        color: #fff;
-        font-size: 30px;
-        line-height: 40px;
-    }
-    .heading-paragraph {
-        color: #fff;
-        font-size: 20px;
-    }
-    /* .timer-col {
-        background-color: #fff;
-        margin: 10px;
-        padding: 12px;
-        border-radius: 6px;
-    }
-    .timer-text {
-        text-align: center;
-        font-weight: bold;
-        font-size: 20px;
-        color: #0D47A1;
-    }
-    .count-down-text {
-        font-size: 20px;
-    } */
-    
+.container {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30vh;
+}
+.product-card {
+  background-color: #fff;
+  border: none;
+  border: 1px solid #fafbfb;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.card-body > img {
+  width: 100%;
+}
 </style>
