@@ -3,38 +3,41 @@
     <div class="container">
       <div class="row p-5">
         <div class="col-sm-6">
-          <div class="card product-card">
-            <div class="card-body">
-              <h5 class="card-title">
-                <strong>Qurban Sapi</strong>
-              </h5>
-              <p class="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <img
-                src="https://media.flaticon.com/dist/min/img/home/cards-products-section/icons.png"
-                alt=""
-              />
+          <router-link to="/sapi">
+            <div class="card product-card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <strong>Qurban Sapi</strong>
+                </h5>
+                <p class="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <img
+                  src="https://media.flaticon.com/dist/min/img/home/cards-products-section/icons.png"
+                  alt=""
+                />
+              </div>
             </div>
-          </div>
+          </router-link>
         </div>
         <div class="col-sm-6">
-          <div class="card product-card">
-            <div class="card-body">
-              <h5 class="card-title">
-                <strong>Qurban Kambing</strong>
-              </h5>
-              <p class="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <img
-                src="https://media.flaticon.com/dist/min/img/home/cards-products-section/stickers.png"
-                alt=""
-              />
-            </div>
-          </div>
+          <router-link to="/kambing">
+            <div class="card product-card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <strong>Qurban Kambing</strong>
+                </h5>
+                <p class="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <img
+                  src="https://media.flaticon.com/dist/min/img/home/cards-products-section/stickers.png"
+                  alt=""
+                />
+              </div></div
+          ></router-link>
         </div>
       </div>
     </div>
@@ -70,6 +73,7 @@ export default {
   border: 1px solid #fafbfb;
   border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  text-decoration: none;
 }
 
 .card-body > img {
