@@ -1,43 +1,30 @@
 <template>
   <div>
     <div class="container">
-      <div class="row p-5">
-        <div class="col-sm-6">
-          <router-link to="/sapi">
-            <div class="card product-card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <strong>Qurban Sapi</strong>
-                </h5>
-                <p class="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <img
-                  src="https://media.flaticon.com/dist/min/img/home/cards-products-section/icons.png"
-                  alt=""
-                />
+      <div class="row">
+        <div class="col-sm-3 p-0 custom-col">
+          <router-link to="/detail/sapi">
+            <div class="card menu-card orange">
+              <div class="menu-icon orange-dark">
+                <ion-icon name="layers-outline"></ion-icon>
+              </div>
+              <div class="menu-text">
+                <h5>Qurban Sapi</h5>
               </div>
             </div>
           </router-link>
         </div>
-        <div class="col-sm-6">
-          <router-link to="/kambing">
-            <div class="card product-card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <strong>Qurban Kambing</strong>
-                </h5>
-                <p class="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <img
-                  src="https://media.flaticon.com/dist/min/img/home/cards-products-section/stickers.png"
-                  alt=""
-                />
-              </div></div
-          ></router-link>
+        <div class="col-sm-3 p-0 custom-col">
+          <router-link to="/detail/kambing">
+            <div class="card menu-card purple">
+              <div class="menu-icon purple-dark">
+                <ion-icon name="copy-outline"></ion-icon>
+              </div>
+              <div class="menu-text">
+                <h5>Qurban Kambing</h5>
+              </div>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -57,26 +44,72 @@ export default {
 .container {
   background-color: #fff;
   height: 100vh;
+  width: 100vw;
   display: flex;
-  align-items: center;
-}
-.card-wrapper {
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-top: 30vh;
 }
-.product-card {
-  background-color: #fff;
-  border: none;
-  border: 1px solid #fafbfb;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  text-decoration: none;
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.custom-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card-body > img {
-  width: 100%;
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-card {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.menu-card:hover {
+  cursor: pointer;
+}
+.menu-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: #fff;
+  border-radius: 8px;
+}
+.menu-text > h5 {
+  font-weight: 600;
+  color: #fff;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+.orange {
+  background-color: #f36e2d;
+}
+.orange-dark {
+  background-color: #e16134;
+}
+.purple {
+  background-color: #754ee4;
+}
+.purple-dark {
+  background-color: #5943bd;
 }
 </style>

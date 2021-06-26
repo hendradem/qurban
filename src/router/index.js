@@ -1,8 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "@/pages/HomePage.vue";
-import Sapi from "@/pages/Sapi.vue";
-import Kambing from "@/pages/Kambing.vue";
+import DetailPage from "@/pages/DetailPage.vue";
 
 Vue.use(Router);
 
@@ -14,14 +13,9 @@ export default new Router({
       component: Home,
     },
     {
-      path: "/sapi",
-      name: "sapi",
-      component: Sapi,
-    },
-    {
-      path: "/kambing",
-      name: "kambing",
-      component: Kambing,
+      path: "/detail/:tipe",
+      name: "detail",
+      component: DetailPage,
     },
   ],
   mode: "history",
