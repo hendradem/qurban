@@ -12,7 +12,15 @@
       </div>
       <div class="card-body">
         <div class="product-spec p-3">
-          <h4>{{ productParam }} tipe {{ isProductTypeSelected }}</h4>
+          <h4>{{ productParam }} tipe {{ ProductTypeSelected }}</h4>
+          <span class="mr-2 badge-spec"
+            ><ion-icon name="scale"></ion-icon> Berat
+            {{ selectedWeight }} KG</span
+          >
+          <span class="badge-spec"
+            ><ion-icon name="hourglass"></ion-icon> Usia
+            {{ selectedAge }} tahun</span
+          >
         </div>
 
         <div class="product-type">
@@ -25,16 +33,15 @@
                 v-for="item in sapiList"
                 :key="item.type"
                 class="card card-product-type"
-                :class="{ selected: isProductTypeSelected == item.type }"
+                :class="{ selected: ProductTypeSelected == item.type }"
                 @click="
-                  {
-                    (isProductTypeSelected = item.type),
-                      (isProductTypeChecked = item.type),
-                      (selectedImg = item.img),
-                      (selectedPrice = item.price[0]),
-                      (selectedItem.jenisHewan = item.type),
-                      (selectedItem.hargaHewan = item.price[0]);
-                  }
+                  productTypeAct(
+                    item.type,
+                    item.img,
+                    item.price,
+                    item.weight,
+                    item.age
+                  )
                 "
               >
                 <div class="form-check">
@@ -42,8 +49,8 @@
                     class="form-check-input custom-radio-bullet"
                     type="radio"
                     value="option1"
-                    @change="isProductTypeChecked = item.type"
-                    :checked="isProductTypeChecked == item.type"
+                    @change="ProductTypeChecked = item.type"
+                    :checked="ProductTypeChecked == item.type"
                   />
                   <label class="form-check-label label-tipe-hewan">
                     Tipe {{ item.type }}
@@ -57,15 +64,17 @@
                 v-for="item in kambingList"
                 :key="item.type"
                 class="card card-product-type"
-                :class="{ selected: isProductTypeSelected == item.type }"
+                :class="{ selected: ProductTypeSelected == item.type }"
                 @click="
                   {
-                    (isProductTypeSelected = item.type),
-                      (isProductTypeChecked = item.type),
+                    (ProductTypeSelected = item.type),
+                      (ProductTypeChecked = item.type),
                       (selectedImg = item.img),
                       (selectedPrice = item.price),
                       (selectedItem.jenisHewan = item.type),
                       (selectedItem.hargaHewan = item.price);
+                    selectedWeight = item.weight;
+                    selectedAge = item.age;
                   }
                 "
               >
@@ -74,8 +83,8 @@
                     class="form-check-input custom-radio-bullet"
                     type="radio"
                     value="option1"
-                    @change="isProductTypeChecked = item.type"
-                    :checked="isProductTypeChecked == item.type"
+                    @change="ProductTypeChecked = item.type"
+                    :checked="ProductTypeChecked == item.type"
                   />
                   <label class="form-check-label label-tipe-hewan">
                     Tipe {{ item.type }}
@@ -86,9 +95,40 @@
           </div>
         </div>
 
-        <div class="qurban-type mt-3">
+        <div v-if="isProductTypeSelected" class="qurban-type">
           <div class="qurban-type-wrapper px-3 pb-2">
-            <form>
+            <span class="product-type-title">Pilih tipe qurban</span>
+            <div
+              v-if="productParam === 'sapi'"
+              class="qurban-type-card-wrapper mt-1"
+            >
+              <div
+                class="qurban-type-card"
+                :class="{
+                  qurbantypeselectedcard: qurbanTypeSelected == 'sendiri',
+                }"
+                @click="qurbanTypeAct('sendiri')"
+              >
+                <ion-icon name="person"></ion-icon>
+                <span class="ml-2">Sendiri</span>
+              </div>
+              <div
+                class="qurban-type-card"
+                :class="{
+                  qurbantypeselectedcard: qurbanTypeSelected == 'rombongan',
+                }"
+                @click="qurbanTypeAct('rombongan')"
+              >
+                <ion-icon name="people"></ion-icon>
+                <span class="ml-2">Rombongan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="isQurbanTypeSelected" class="qurban-data mt-3">
+          <div class="qurban-data-wrapper px-3 pb-2">
+            <form class="form-data-user">
               <div class="form-row mb-0">
                 <div class="form-group col-md-6">
                   <label class="form-label">Nama lengkap</label>
@@ -119,10 +159,26 @@
                   v-model="selectedItem.alamatLengkap"
                 />
               </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input custom-checkbox"
+                  type="checkbox"
+                  v-model="selectedItem.mauMenerimaDaging"
+                  true-value="mau"
+                  false-value="tidak"
+                />
+                <label
+                  class="form-check-label form-label"
+                  for="autoSizingCheck2"
+                >
+                  Saya mau menerima daging qurban
+                </label>
+              </div>
             </form>
           </div>
         </div>
       </div>
+
       <div class="btn-order-wrapper">
         <div class="row">
           <div class="col-sm-5">
@@ -134,10 +190,8 @@
           <div class="col-sm-7">
             <a
               @click="addProduct()"
-              :href="convertedLink"
-              target="_blank"
-              class="btn btn-primary btn-block btn-order"
-              >Pesan {{ productParam }} tipe {{ isProductTypeChecked }}</a
+              class="btn btn-primary btn-block btn-order text-white"
+              >Pesan {{ productParam }} tipe {{ ProductTypeChecked }}</a
             >
           </div>
         </div>
@@ -156,6 +210,7 @@ export default {
         {
           type: "A",
           weight: "200-230",
+          age: "+- 2",
           price: [23800000, 3400000],
           img:
             "https://images.unsplash.com/photo-1602489646892-f866fde016f5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNvd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
@@ -163,6 +218,7 @@ export default {
         {
           type: "B",
           weight: "180-200",
+          age: "+- 2",
           price: [22750000, 3250000],
           img:
             "https://images.unsplash.com/photo-1545468800-85cc9bc6ecf7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
@@ -170,6 +226,7 @@ export default {
         {
           type: "C",
           weight: "150-180",
+          age: "+- 2",
           price: [21700000, 3100000],
           img:
             "https://images.unsplash.com/photo-1593063162225-2d311e7a8a0a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGNvd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
@@ -179,30 +236,39 @@ export default {
         {
           type: "A",
           weight: "35-40",
+          age: "+- 1",
           price: "3.2 - 3.5 juta",
           img: "https://i.imgur.com/57Ok49R.jpg",
         },
         {
           type: "B",
           weight: "32-34",
+          age: "+- 1",
           price: "2.9 - 3.1 juta",
           img: "https://i.imgur.com/Ys8rLb8.jpg",
         },
         {
           type: "C",
           weight: "28-31",
+          age: "+- 1",
           price: "2.6 - 2.8 juta",
           img: "https://i.imgur.com/H6eLPQx.jpg",
         },
       ],
 
-      qurbanType: ["sendiri", "rombongan"],
-      isProductTypeChecked: "",
-      isProductTypeSelected: "",
-      isQurbanTypeCheced: "",
-      isQurbanTypeSelected: "",
+      ProductTypeChecked: "",
+      ProductTypeSelected: "",
       selectedImg: "",
       selectedPrice: "",
+      selectedWeight: "",
+      selectedAge: "",
+
+      isProductTypeSelected: false,
+      isQurbanTypeSelected: false,
+      qurbanTypeSelected: "",
+
+      toggle: "",
+
       selectedItem: [
         {
           namaLengkap: "",
@@ -210,8 +276,8 @@ export default {
           alamatLengkap: "",
           jenisHewan: "",
           hargaHewan: "",
-          jenisQurban: "rombongan",
-          mauMenerimaDaging: "ya",
+          jenisQurban: "",
+          mauMenerimaDaging: "tidak",
         },
       ],
       convertedLink: "",
@@ -227,6 +293,66 @@ export default {
     }
   },
   methods: {
+    productTypeAct(type, img, price, weight, age) {
+      this.isProductTypeSelected = true;
+      if (this.qurbanTypeSelected == "sendiri") {
+        this.selectedPrice = price[0];
+        this.selectedItem.hargaHewan = price[0];
+      } else if (this.qurbanTypeSelected == "rombongan") {
+        this.selectedPrice = price[1];
+        this.selectedItem.hargaHewan = price[1];
+      }
+      this.ProductTypeSelected = type;
+      this.ProductTypeChecked = type;
+      this.selectedImg = img;
+      this.selectedItem.jenisHewan = type;
+      this.selectedWeight = weight;
+      this.selectedAge = age;
+    },
+
+    qurbanTypeAct(tipe) {
+      this.qurbanTypeSelected = tipe;
+      this.isQurbanTypeSelected = true;
+      this.selectedItem.jenisQurban = tipe;
+      let temp = this.ProductTypeSelected;
+
+      if (this.qurbanTypeSelected == "sendiri") {
+        switch (temp) {
+          case "A":
+            this.selectedPrice = this.sapiList[0].price[0];
+            this.selectedItem.hargaHewan = this.sapiList[0].price[0];
+            break;
+          case "B":
+            this.selectedPrice = this.sapiList[1].price[0];
+            this.selectedItem.hargaHewan = this.sapiList[1].price[0];
+            break;
+          case "C":
+            this.selectedPrice = this.sapiList[2].price[0];
+            this.selectedItem.hargaHewan = this.sapiList[2].price[0];
+            break;
+          default:
+            return false;
+        }
+      } else if (this.qurbanTypeSelected == "rombongan") {
+        switch (temp) {
+          case "A":
+            this.selectedPrice = this.sapiList[0].price[1];
+            this.selectedItem.hargaHewan = this.sapiList[0].price[1];
+            break;
+          case "B":
+            this.selectedPrice = this.sapiList[1].price[1];
+            this.selectedItem.hargaHewan = this.sapiList[1].price[1];
+            break;
+          case "C":
+            this.selectedPrice = this.sapiList[2].price[1];
+            this.selectedItem.hargaHewan = this.sapiList[2].price[1];
+            break;
+          default:
+            return false;
+        }
+      }
+    },
+
     addProduct() {
       let item = this.selectedItem;
 
@@ -239,7 +365,7 @@ export default {
       )}%0A*Alamat*%20%3A%20${encodeURIComponent(
         item.alamatLengkap
       )}%0A*Tipe%20Hewan*%20%3A%20${encodeURIComponent(
-        item.jenisHewan
+        this.productParam + " tipe " + item.jenisHewan
       )}%0A*Tipe%20Qurban*%20%3A%20${encodeURIComponent(
         item.jenisQurban
       )}%0A*Harga*%20%3A%20${encodeURIComponent(
@@ -248,7 +374,7 @@ export default {
         item.mauMenerimaDaging
       )}`;
 
-      this.convertedLink = url;
+      window.open(`${url}`, "_blank");
     },
   },
 };
@@ -259,8 +385,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 .card-header-action {
@@ -281,8 +405,8 @@ export default {
 }
 
 .product-card {
-  width: 400px;
-  /* height: 700px; */
+  width: 370px;
+  /* height: 100vh; */
   border: 1px solid #f3f4f6;
   padding-bottom: 0;
   /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -290,12 +414,11 @@ export default {
 }
 
 .card-body {
-  /* overflow-y: scroll; */
   padding: 0;
 }
 
 .product-img {
-  height: 300px;
+  height: 280px;
   padding: 0;
   border-radius: 0px;
 }
@@ -310,16 +433,21 @@ export default {
 /* product spec */
 
 .product-spec > h4 {
-  font-size: 17px;
+  font-size: 16px;
+  color: #374151;
+}
+
+.product-spec > span {
+  font-size: 11px;
+  color: #4b5563;
+}
+.badge-spec {
+  background-color: #f3f4f6;
+  padding: 3px;
+  border-radius: 4px;
 }
 
 /* product type */
-
-.product-type {
-  border-top: 1px solid #f3f4f6;
-  border-bottom: 1px solid #f3f4f6;
-}
-
 .product-type-card {
   display: flex;
 }
@@ -332,14 +460,15 @@ export default {
   padding: 2px 10px;
   border: none;
   margin-right: 4px;
-  border: 1px solid #f3f4f6;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 2px solid #f3f4f6;
 }
 .custom-radio-bullet {
   margin-top: 6px;
 }
 .selected {
-  border: 1px solid #1a70fb;
+  border: 2px solid #1a70fb;
+  color: #1a70fb;
+  background-color: #f6faff;
 }
 
 .product-type-title {
@@ -359,23 +488,57 @@ export default {
   color: #6b7280;
 }
 
-/* User form */
-.form-label {
+/* Qurban type */
+.qurban-type-card-wrapper {
+  display: flex;
+}
+.qurban-type-card {
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  margin-right: 4px;
+  border: 2px solid #f3f4f6;
+  border-radius: 5px;
+  font-weight: 500;
   color: #6b7280;
+  font-size: 12px;
+}
+.qurban-type-card:hover {
+  cursor: pointer;
+}
+.qurbantypeselectedcard {
+  border: 2px solid #1a70fb;
+  color: #1a70fb;
+  background-color: #f6faff;
+}
+
+/* User form */
+.form-data-user {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 10px;
+}
+.form-label {
+  color: #9ca3af;
   font-size: 12px;
   font-weight: 500;
 }
 .custom-form {
-  border-radius: 5px;
-  border: 1.5px solid #dce1e7;
+  border-radius: 4px;
+  border: 1px solid #dce1e7;
+  font-size: 11px;
+  height: 30px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 .custom-form:focus {
   box-shadow: none;
   border-radius: none;
+  border: 2px solid #1a70fb;
+}
+.custom-checkbox {
+  margin-top: 7px;
 }
 
 /* Card actiom */
-
 .btn-order {
   border: none;
   font-size: 14px;
