@@ -185,7 +185,7 @@
                   <input
                     class="form-check-input custom-checkbox"
                     type="checkbox"
-                    v-model="selectedItem.mauMenerimaDaging"
+                    v-model="mauMenerimaDaging"
                     true-value="mau"
                     false-value="tidak"
                   />
@@ -236,41 +236,6 @@
               ></span>
             </div>
             <div class="order-body">
-              <!-- <div class="card card-product-overview">
-                <div class="card-product-overview-img">
-                  <img :src="selectedImg" />
-                </div>
-                <div class="card-product-overview-content">
-                  <h5 class="card-title">
-                    {{ productParam + " tipe " + ProductTypeSelected }}
-                  </h5>
-                  <p class="card-text product-type">
-                    Kruban {{ qurbanTypeSelected }}
-                  </p>
-                  <p class="card-text product-price">
-                    Rp {{ selectedPrice.toLocaleString() }}
-                  </p>
-                </div>
-                <div class="row no-gutters">
-                  <div class="col-md-3 card-img-overview">
-                    <img :src="selectedImg" />
-                  </div>
-                  <div class="col-md-9">
-                    <div class="card-body card-body-overview">
-                      <h5 class="card-title">
-                        {{ productParam + " tipe " + ProductTypeSelected }}
-                      </h5>
-                      <p class="card-text product-type">
-                        Kruban {{ qurbanTypeSelected }}
-                      </p>
-                      <p class="card-text product-price">
-                        Rp {{ selectedPrice.toLocaleString() }}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
               <div class="card card-product-overview">
                 <div class="card-img-overview">
                   <img :src="selectedImg" />
@@ -298,13 +263,13 @@
                 <div class="div">
                   <span class="user-info-title"> Mau menerima daging:</span>
                   <span class="user-info-value float-right">
-                    {{ selectedItem.mauMenerimaDaging }}
-                    <span v-if="selectedItem.mauMenerimaDaging == 'tidak'">
+                    {{ mauMenerimaDaging }}
+                    <span v-if="mauMenerimaDaging == 'tidak'">
                       ( disalurkan panitia)</span
                     >
                   </span>
                 </div>
-                <div v-if="selectedItem.mauMenerimaDaging == 'mau'" class="div">
+                <div v-if="mauMenerimaDaging == 'mau'" class="div">
                   <span class="user-info-title"> Alamat pengiriman:</span>
                   <span class="user-info-value float-right">{{
                     selectedItem.alamatLengkap
@@ -392,7 +357,9 @@ export default {
 
       toggle: "",
       nomorWA: "",
-      mauMenerimaDaging: "",
+      mauMenerimaDaging: "tidak",
+
+      whatsAppAdmin: "6285643172430",
 
       selectedItem: [
         {
@@ -402,7 +369,6 @@ export default {
           jenisHewan: "",
           hargaHewan: "",
           jenisQurban: "",
-          mauMenerimaDaging: "tidak",
         },
       ],
 
@@ -488,7 +454,7 @@ export default {
       let item = this.selectedItem;
 
       let url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
-        item.nomorWA
+        this.whatsAppAdmin
       )}&text=*Halo%2C%20saya%20mau%20pesan%20hewan%20qurban*%0A%0A*Nama*%20%3A%20${encodeURIComponent(
         item.namaLengkap
       )}%0A*HP*%20%3A%20${encodeURIComponent(
@@ -502,7 +468,7 @@ export default {
       )}%0A*Harga*%20%3A%20${encodeURIComponent(
         item.hargaHewan.toLocaleString()
       )}%0A*Mau%20menerima%20daging*%20%3A%20${encodeURIComponent(
-        item.mauMenerimaDaging
+        this.mauMenerimaDaging
       )}`;
 
       window.open(`${url}`, "_blank");
