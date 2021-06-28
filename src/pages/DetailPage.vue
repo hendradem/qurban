@@ -1,199 +1,323 @@
 <template>
   <div class="container product-container">
-    <div class="card product-card p-0">
-      <div class="card-header-action">
-        <router-link to="/" class="btn-back"
-          ><i class="fas fa-angle-left"></i>
-        </router-link>
-        <span class="card-heading-title">Kurban {{ productParam }}</span>
-      </div>
-      <div class="product-img p-0">
-        <img :src="selectedImg" class="card-img-top" />
-      </div>
-      <div class="card-body">
-        <div class="product-spec p-3">
-          <h4>{{ productParam }} tipe {{ ProductTypeSelected }}</h4>
-          <span class="mr-2 badge-spec"
-            ><ion-icon name="scale"></ion-icon> Berat
-            {{ selectedWeight }} KG</span
-          >
-          <span class="badge-spec"
-            ><ion-icon name="hourglass"></ion-icon> Usia
-            {{ selectedAge }} tahun</span
-          >
+    <div class="col-md-5 product-col">
+      <div class="card product-card">
+        <div class="card-header-action">
+          <router-link to="/" class="btn-back"
+            ><i class="fas fa-angle-left"></i>
+          </router-link>
+          <span class="card-heading-title">Kurban {{ productParam }}</span>
         </div>
-
-        <div class="product-type">
-          <div class="product-type-wrapper px-3 pb-2">
-            <span class="product-type-title"
-              >Pilih tipe {{ productParam }}</span
+        <div class="product-img p-0">
+          <img :src="selectedImg" class="card-img-top" />
+        </div>
+        <div class="card-body">
+          <div class="product-spec p-3">
+            <h4>{{ productParam }} tipe {{ ProductTypeSelected }}</h4>
+            <span class="mr-2 badge-spec"
+              ><ion-icon name="scale"></ion-icon> Berat
+              {{ selectedWeight }} KG</span
             >
-            <div v-if="productParam === 'sapi'" class="product-type-card mt-1">
-              <div
-                v-for="item in sapiList"
-                :key="item.type"
-                class="card card-product-type"
-                :class="{ selected: ProductTypeSelected == item.type }"
-                @click="
-                  productTypeAct(
-                    item.type,
-                    item.img,
-                    item.price,
-                    item.weight,
-                    item.age
-                  )
-                "
+            <span class="badge-spec"
+              ><ion-icon name="hourglass"></ion-icon> Usia
+              {{ selectedAge }} tahun</span
+            >
+          </div>
+
+          <div class="product-type">
+            <div class="product-type-wrapper px-3 pb-2">
+              <span class="product-type-title"
+                >Pilih tipe {{ productParam }}</span
               >
-                <div class="form-check">
-                  <input
-                    class="form-check-input custom-radio-bullet"
-                    type="radio"
-                    value="option1"
-                    @change="ProductTypeChecked = item.type"
-                    :checked="ProductTypeChecked == item.type"
-                  />
-                  <label class="form-check-label label-tipe-hewan">
-                    Tipe {{ item.type }}
-                  </label>
+              <div
+                v-if="productParam === 'sapi'"
+                class="product-type-card mt-1"
+              >
+                <div
+                  v-for="item in sapiList"
+                  :key="item.type"
+                  class="card card-product-type"
+                  :class="{ selected: ProductTypeSelected == item.type }"
+                  @click="
+                    productTypeAct(
+                      item.type,
+                      item.img,
+                      item.price,
+                      item.weight,
+                      item.age
+                    )
+                  "
+                >
+                  <div class="form-check">
+                    <input
+                      class="form-check-input custom-radio-bullet"
+                      type="radio"
+                      value="option1"
+                      @change="ProductTypeChecked = item.type"
+                      :checked="ProductTypeChecked == item.type"
+                    />
+                    <label class="form-check-label label-tipe-hewan">
+                      Tipe {{ item.type }}
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div v-else class="product-type-card mt-1">
-              <div
-                v-for="item in kambingList"
-                :key="item.type"
-                class="card card-product-type"
-                :class="{ selected: ProductTypeSelected == item.type }"
-                @click="
-                  {
-                    (ProductTypeSelected = item.type),
-                      (ProductTypeChecked = item.type),
-                      (selectedImg = item.img),
-                      (selectedPrice = item.price),
-                      (selectedItem.jenisHewan = item.type),
-                      (selectedItem.hargaHewan = item.price);
-                    selectedWeight = item.weight;
-                    selectedAge = item.age;
-                  }
-                "
-              >
-                <div class="form-check">
-                  <input
-                    class="form-check-input custom-radio-bullet"
-                    type="radio"
-                    value="option1"
-                    @change="ProductTypeChecked = item.type"
-                    :checked="ProductTypeChecked == item.type"
-                  />
-                  <label class="form-check-label label-tipe-hewan">
-                    Tipe {{ item.type }}
-                  </label>
+              <div v-else class="product-type-card mt-1">
+                <div
+                  v-for="item in kambingList"
+                  :key="item.type"
+                  class="card card-product-type"
+                  :class="{ selected: ProductTypeSelected == item.type }"
+                  @click="
+                    {
+                      (ProductTypeSelected = item.type),
+                        (ProductTypeChecked = item.type),
+                        (selectedImg = item.img),
+                        (selectedPrice = item.price),
+                        (selectedItem.jenisHewan = item.type),
+                        (selectedItem.hargaHewan = item.price);
+                      selectedWeight = item.weight;
+                      selectedAge = item.age;
+                      isQurbanKambingTypeSelected = true;
+                    }
+                  "
+                >
+                  <div class="form-check">
+                    <input
+                      class="form-check-input custom-radio-bullet"
+                      type="radio"
+                      value="option1"
+                      @change="ProductTypeChecked = item.type"
+                      :checked="ProductTypeChecked == item.type"
+                    />
+                    <label class="form-check-label label-tipe-hewan">
+                      Tipe {{ item.type }}
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div v-if="isProductTypeSelected" class="qurban-type">
-          <div class="qurban-type-wrapper px-3 pb-2">
-            <span class="product-type-title">Pilih tipe qurban</span>
-            <div
-              v-if="productParam === 'sapi'"
-              class="qurban-type-card-wrapper mt-1"
-            >
+          <div v-if="isProductTypeSelected" class="qurban-type">
+            <div class="qurban-type-wrapper px-3 pb-2">
+              <span class="product-type-title">Pilih tipe qurban</span>
               <div
-                class="qurban-type-card"
-                :class="{
-                  qurbantypeselectedcard: qurbanTypeSelected == 'sendiri',
-                }"
-                @click="qurbanTypeAct('sendiri')"
+                v-if="productParam === 'sapi'"
+                class="qurban-type-card-wrapper mt-1"
               >
-                <ion-icon name="person"></ion-icon>
-                <span class="ml-2">Sendiri</span>
-              </div>
-              <div
-                class="qurban-type-card"
-                :class="{
-                  qurbantypeselectedcard: qurbanTypeSelected == 'rombongan',
-                }"
-                @click="qurbanTypeAct('rombongan')"
-              >
-                <ion-icon name="people"></ion-icon>
-                <span class="ml-2">Rombongan</span>
+                <div
+                  class="qurban-type-card"
+                  :class="{
+                    qurbantypeselectedcard: qurbanTypeSelected == 'sendiri',
+                  }"
+                  @click="qurbanTypeAct('sendiri')"
+                >
+                  <ion-icon name="person"></ion-icon>
+                  <span class="ml-2">Sendiri</span>
+                </div>
+                <div
+                  class="qurban-type-card"
+                  :class="{
+                    qurbantypeselectedcard: qurbanTypeSelected == 'rombongan',
+                  }"
+                  @click="qurbanTypeAct('rombongan')"
+                >
+                  <ion-icon name="people"></ion-icon>
+                  <span class="ml-2">Rombongan</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div v-if="isQurbanTypeSelected" class="qurban-data mt-3">
-          <div class="qurban-data-wrapper px-3 pb-2">
-            <form class="form-data-user">
-              <div class="form-row mb-0">
-                <div class="form-group col-md-6">
-                  <label class="form-label">Nama lengkap</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-sm custom-form"
-                    v-model="selectedItem.namaLengkap"
-                  />
+          <div
+            v-if="isQurbanTypeSelected || isQurbanKambingTypeSelected"
+            class="qurban-data mt-3"
+          >
+            <div class="qurban-data-wrapper px-3 pb-2">
+              <form class="form-data-user">
+                <div class="form-row mb-0">
+                  <div class="form-group col-md-6">
+                    <label class="form-label">Nama lengkap</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm custom-form"
+                      :state="isValidated.namaEmpty"
+                      @keyup="validationSuccess"
+                      id="feedback-user"
+                      v-model="selectedItem.namaLengkap"
+                    />
+                    <b-form-invalid-feedback :state="!isValidated.namaEmpty">
+                      Masukkan nama lengkap
+                    </b-form-invalid-feedback>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4" class="form-label"
+                      >Nomor Whatsapp</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control form-control-sm custom-form"
+                      v-model="nomorWA"
+                      @keyup="validationSuccess"
+                    />
+                    <b-form-invalid-feedback :state="!isValidated.waEmpty">
+                      Masukkan nomor WA
+                    </b-form-invalid-feedback>
+                  </div>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4" class="form-label"
-                    >Nomor Whatsapp</label
+                <div class="form-group mt--3">
+                  <label for="inputAddress" class="form-label"
+                    >Alamat lengkap</label
                   >
                   <input
                     type="text"
                     class="form-control form-control-sm custom-form"
-                    v-model="selectedItem.nomorWA"
+                    v-model="selectedItem.alamatLengkap"
+                    @keyup="validationSuccess"
                   />
+                  <b-form-invalid-feedback :state="!isValidated.alamatEmpty">
+                    Masukkan alamat lengkap
+                  </b-form-invalid-feedback>
                 </div>
-              </div>
-              <div class="form-group mt--3">
-                <label for="inputAddress" class="form-label"
-                  >Alamat lengkap</label
-                >
-                <input
-                  type="text"
-                  class="form-control form-control-sm custom-form"
-                  v-model="selectedItem.alamatLengkap"
-                />
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input custom-checkbox"
-                  type="checkbox"
-                  v-model="selectedItem.mauMenerimaDaging"
-                  true-value="mau"
-                  false-value="tidak"
-                />
-                <label
-                  class="form-check-label form-label"
-                  for="autoSizingCheck2"
-                >
-                  Saya mau menerima daging qurban
-                </label>
-              </div>
-            </form>
+                <div class="form-check">
+                  <input
+                    class="form-check-input custom-checkbox"
+                    type="checkbox"
+                    v-model="selectedItem.mauMenerimaDaging"
+                    true-value="mau"
+                    false-value="tidak"
+                  />
+                  <label
+                    class="form-check-label form-label"
+                    for="autoSizingCheck2"
+                  >
+                    Saya mau menerima daging qurban
+                  </label>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="btn-order-wrapper">
-        <div class="row">
-          <div class="col-sm-5">
-            <p class="text-muted total-price-title">Harga hewan:</p>
-            <h5 class="total-price">
-              Rp. {{ selectedPrice.toLocaleString() }}
-            </h5>
+        <div class="btn-order-wrapper">
+          <div class="row">
+            <div class="col-sm-5">
+              <p class="text-muted total-price-title">Harga hewan:</p>
+              <h5 class="total-price">
+                Rp. {{ selectedPrice.toLocaleString() }}
+              </h5>
+            </div>
+            <div class="col-sm-7">
+              <b-button
+                @click="validateOrder"
+                class="btn btn-primary btn-block btn-order text-white"
+                >Pesan {{ productParam }} tipe
+                {{ ProductTypeChecked }}</b-button
+              >
+            </div>
           </div>
-          <div class="col-sm-7">
-            <a
-              @click="addProduct()"
-              class="btn btn-primary btn-block btn-order text-white"
-              >Pesan {{ productParam }} tipe {{ ProductTypeChecked }}</a
-            >
-          </div>
+        </div>
+
+        <div>
+          <b-modal
+            ref="my-modal"
+            size="sm"
+            hide-footer="true"
+            hide-header="true"
+            centered
+            class="custom-modal"
+          >
+            <div class="order-header">
+              <span class="order-header-title">Checkout pesanan anda</span>
+              <span class="order-header-close" @click="hideModal"
+                ><ion-icon name="close-circle"></ion-icon
+              ></span>
+            </div>
+            <div class="order-body">
+              <!-- <div class="card card-product-overview">
+                <div class="card-product-overview-img">
+                  <img :src="selectedImg" />
+                </div>
+                <div class="card-product-overview-content">
+                  <h5 class="card-title">
+                    {{ productParam + " tipe " + ProductTypeSelected }}
+                  </h5>
+                  <p class="card-text product-type">
+                    Kruban {{ qurbanTypeSelected }}
+                  </p>
+                  <p class="card-text product-price">
+                    Rp {{ selectedPrice.toLocaleString() }}
+                  </p>
+                </div>
+                <div class="row no-gutters">
+                  <div class="col-md-3 card-img-overview">
+                    <img :src="selectedImg" />
+                  </div>
+                  <div class="col-md-9">
+                    <div class="card-body card-body-overview">
+                      <h5 class="card-title">
+                        {{ productParam + " tipe " + ProductTypeSelected }}
+                      </h5>
+                      <p class="card-text product-type">
+                        Kruban {{ qurbanTypeSelected }}
+                      </p>
+                      <p class="card-text product-price">
+                        Rp {{ selectedPrice.toLocaleString() }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <div class="card card-product-overview">
+                <div class="card-img-overview">
+                  <img :src="selectedImg" />
+                </div>
+                <div class="card-content-overview">
+                  <h5 class="card-title">
+                    {{ productParam + " tipe " + ProductTypeSelected }}
+                  </h5>
+                  <p class="card-text product-type">
+                    Kruban {{ qurbanTypeSelected }}
+                  </p>
+                  <p class="card-text product-price">
+                    Rp {{ selectedPrice.toLocaleString() }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="user-info">
+                <div class="div">
+                  <span class="user-info-title"> Nama:</span>
+                  <span class="user-info-value float-right">
+                    {{ selectedItem.namaLengkap }}
+                  </span>
+                </div>
+                <div class="div">
+                  <span class="user-info-title"> Mau menerima daging:</span>
+                  <span class="user-info-value float-right">
+                    {{ selectedItem.mauMenerimaDaging }}
+                    <span v-if="selectedItem.mauMenerimaDaging == 'tidak'">
+                      ( disalurkan panitia)</span
+                    >
+                  </span>
+                </div>
+                <div v-if="selectedItem.mauMenerimaDaging == 'mau'" class="div">
+                  <span class="user-info-title"> Alamat pengiriman:</span>
+                  <span class="user-info-value float-right">{{
+                    selectedItem.alamatLengkap
+                  }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="order-action">
+              <button class="btn btn-primary btn-confirm" @click="addProduct()">
+                <ion-icon name="bag-check"></ion-icon> Pesan hewan
+              </button>
+            </div>
+          </b-modal>
         </div>
       </div>
     </div>
@@ -209,27 +333,24 @@ export default {
       sapiList: [
         {
           type: "A",
-          weight: "200-230",
+          weight: "390-400",
           age: "+- 2",
           price: [23800000, 3400000],
-          img:
-            "https://images.unsplash.com/photo-1602489646892-f866fde016f5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGNvd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          img: "https://i.imgur.com/D0z65Ic.jpg",
         },
         {
           type: "B",
-          weight: "180-200",
+          weight: "370-400",
           age: "+- 2",
           price: [22750000, 3250000],
-          img:
-            "https://images.unsplash.com/photo-1545468800-85cc9bc6ecf7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNvd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          img: "https://i.imgur.com/Q60T9L3.jpg",
         },
         {
           type: "C",
-          weight: "150-180",
+          weight: "350-370",
           age: "+- 2",
           price: [21700000, 3100000],
-          img:
-            "https://images.unsplash.com/photo-1593063162225-2d311e7a8a0a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGNvd3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          img: "https://i.imgur.com/JQOD5TK.jpg",
         },
       ],
       kambingList: [
@@ -267,7 +388,11 @@ export default {
       isQurbanTypeSelected: false,
       qurbanTypeSelected: "",
 
+      isQurbanKambingTypeSelected: false,
+
       toggle: "",
+      nomorWA: "",
+      mauMenerimaDaging: "",
 
       selectedItem: [
         {
@@ -280,7 +405,13 @@ export default {
           mauMenerimaDaging: "tidak",
         },
       ],
-      convertedLink: "",
+
+      isValidated: {
+        status: false,
+        namaEmpty: false,
+        waEmpty: false,
+        alamatEmpty: false,
+      },
     };
   },
   mounted() {
@@ -376,6 +507,53 @@ export default {
 
       window.open(`${url}`, "_blank");
     },
+
+    showModal() {
+      this.$refs["my-modal"].show();
+    },
+    hideModal() {
+      this.$refs["my-modal"].hide();
+    },
+
+    validateOrder() {
+      let nama = this.selectedItem.namaLengkap;
+      let wa = this.selectedItem.nomorWA;
+      let alamat = this.selectedItem.alamatLengkap;
+
+      if (!nama) {
+        this.isValidated.namaEmpty = true;
+      }
+      if (!wa) {
+        this.isValidated.waEmpty = true;
+      }
+      if (!alamat) {
+        this.isValidated.alamatEmpty = true;
+      }
+
+      if ((nama, wa, alamat)) {
+        this.showModal();
+      }
+    },
+
+    validationSuccess() {
+      let nama = this.selectedItem.namaLengkap;
+      let wa = this.nomorWA;
+      let alamat = this.selectedItem.alamatLengkap;
+
+      let idCode = "62";
+      let selectedNumb = wa.substring(1);
+      this.selectedItem.nomorWA = idCode + selectedNumb;
+
+      if (nama) {
+        this.isValidated.namaEmpty = false;
+      }
+      if (wa) {
+        this.isValidated.waEmpty = false;
+      }
+      if (alamat) {
+        this.isValidated.alamatEmpty = false;
+      }
+    },
   },
 };
 </script>
@@ -405,8 +583,8 @@ export default {
 }
 
 .product-card {
-  width: 370px;
-  /* height: 100vh; */
+  width: 100%;
+  height: 100vh;
   border: 1px solid #f3f4f6;
   padding-bottom: 0;
   /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -415,6 +593,7 @@ export default {
 
 .card-body {
   padding: 0;
+  overflow-y: auto;
 }
 
 .product-img {
@@ -457,13 +636,13 @@ export default {
 
 .card-product-type {
   width: 100%;
-  padding: 2px 10px;
+  padding: 4px 10px;
   border: none;
   margin-right: 4px;
   border: 2px solid #f3f4f6;
 }
 .custom-radio-bullet {
-  margin-top: 6px;
+  margin-top: 3px;
 }
 .selected {
   border: 2px solid #1a70fb;
@@ -541,14 +720,18 @@ export default {
 /* Card actiom */
 .btn-order {
   border: none;
-  font-size: 14px;
+  font-size: 13px;
   padding: 10px;
-  background-color: #1a70fb;
+  background-color: #0066ff;
   color: #fff;
   font-weight: 500;
+  border-radius: 7px;
 }
 .btn-order:hover {
   background-color: #1a70fb;
+}
+.btn-order:focus {
+  background-color: #0066ff;
 }
 
 .btn-order-wrapper {
@@ -571,7 +754,135 @@ export default {
   color: #f36e2d;
 }
 
-/* overflow scroll */
+/* Order details */
+
+.order-detail {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.692);
+  position: fixed;
+  z-index: 99;
+}
+
+.order-details {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.order-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.order-header-title {
+  color: #000;
+  font-weight: 500;
+}
+.order-header-close {
+  color: #6b7280;
+  font-weight: 500;
+  padding: 0px 6px;
+  padding-top: 4px;
+  border-radius: 50px;
+  background-color: #e5e7eb;
+}
+.order-header-close:hover {
+  cursor: pointer;
+}
+
+.order-body {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.card-product-overview {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #f3f4f6;
+}
+.card-img-overview {
+  width: 25%;
+  height: 60px;
+}
+.card-img-overview > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card-content-overview {
+  padding-top: 3px;
+  padding-left: 10px;
+}
+
+.card-title {
+  font-size: 13px;
+  margin: 0;
+}
+.product-type {
+  font-size: 11px;
+  color: #6b7280;
+}
+.product-price {
+  font-size: 11px;
+  font-weight: 600;
+  color: #f36e2d;
+  margin-top: -10px;
+}
+
+.user-info-title {
+  font-size: 13px;
+  color: #6b7280;
+}
+.user-info-value {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.order-action {
+  width: 100%;
+  display: flex;
+}
+.order-action > button {
+  width: 100%;
+}
+.btn-cancel {
+  background-color: #edf1f7;
+  margin-right: 8px;
+  border: none;
+  color: #6b7280;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.btn-confirm {
+  background-color: #0066ff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 15px;
+  padding: 8px;
+}
+
+/* init */
 ::-webkit-scrollbar {
   width: 2px;
 }
@@ -584,5 +895,25 @@ export default {
 ::-webkit-scrollbar-thumb:hover {
   background: #93c5fd;
   cursor: pointer;
+}
+.emptyForm {
+  border: 2px solid red;
+}
+
+/* Responsive */
+@media screen and (max-width: 450px) {
+  .product-container {
+    background-color: coral;
+    padding: 0px;
+    margin: 0px;
+  }
+  .product-col {
+    margin: 0;
+    padding: 0;
+  }
+  .product-card {
+    margin: 0px;
+    border-radius: 0;
+  }
 }
 </style>

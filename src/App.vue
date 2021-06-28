@@ -17,6 +17,6 @@ export default {
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #fff;
+  background-color: #f9fafb;
 }
 </style>

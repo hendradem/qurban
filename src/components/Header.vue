@@ -1,25 +1,29 @@
 <template>
   <div>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-3 p-0 custom-col">
+      <div class="row no-gutters">
+        <div class="col-sm-3 p-0 custom-col no-gutters">
           <router-link to="/detail/sapi">
             <div class="card menu-card orange">
-              <div class="menu-icon orange-dark">
-                <ion-icon name="layers-outline"></ion-icon>
-              </div>
+              <div class="menu-card-overlay-orange"></div>
+              <img
+                src="https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y293fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt=""
+              />
               <div class="menu-text">
                 <h5>Qurban Sapi</h5>
               </div>
             </div>
           </router-link>
         </div>
-        <div class="col-sm-3 p-0 custom-col">
+        <div class="col-sm-3 p-0 custom-col no-gutters">
           <router-link to="/detail/kambing">
             <div class="card menu-card purple">
-              <div class="menu-icon purple-dark">
-                <ion-icon name="copy-outline"></ion-icon>
-              </div>
+              <div class="menu-card-overlay-purple"></div>
+              <img
+                src="https://images.unsplash.com/photo-1589300719527-1b9246315064?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGdvYXR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt=""
+              />
               <div class="menu-text">
                 <h5>Qurban Kambing</h5>
               </div>
@@ -59,6 +63,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0px;
 }
 
 .menu-wrapper {
@@ -77,24 +82,42 @@ export default {
   justify-content: center;
   border-radius: 8px;
 }
+.menu-card > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
 .menu-card:hover {
   cursor: pointer;
 }
-.menu-icon {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
-  margin-bottom: 10px;
-  color: #fff;
-  border-radius: 8px;
+.menu-card-overlay-purple {
+  width: 100%;
+  height: 100%;
+  background-color: #764ee4c7;
+  z-index: 99;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.menu-card-overlay-orange {
+  width: 100%;
+  height: 100%;
+  background-color: #f36f2dd2;
+  z-index: 99;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.menu-text {
+  position: absolute;
+  z-index: 99;
 }
 .menu-text > h5 {
   font-weight: 600;
   color: #fff;
   font-size: 18px;
+  margin-top: 100px;
 }
 
 a {
