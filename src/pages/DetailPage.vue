@@ -312,7 +312,7 @@ export default {
       sapiList: [
         {
           type: "A",
-          weight: "390-400",
+          weight: "450",
           age: "+- 2",
           price: [24500000, 3500000],
           img:
@@ -320,7 +320,7 @@ export default {
         },
         {
           type: "B",
-          weight: "370-400",
+          weight: "430",
           age: "+- 2",
           price: [23450000, 3350000],
           img:
@@ -328,7 +328,7 @@ export default {
         },
         {
           type: "C",
-          weight: "350-370",
+          weight: "400",
           age: "+- 2",
           price: [22750000, 3250000],
           img:

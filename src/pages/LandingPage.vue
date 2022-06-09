@@ -8,10 +8,15 @@
               <a
                 class="nav-link fw-bold py-1 px-0 active"
                 aria-current="page"
-                href="#"
+                href="/"
                 >Home</a
               >
-              <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>
+              <a
+                class="nav-link fw-bold py-1 px-0"
+                href="https://wa.me/6285643172430"
+                target="_blank"
+                >Kontak</a
+              >
             </nav>
           </div>
         </header>
@@ -29,10 +34,7 @@
             >
               Pilih hewan qurban
             </button>
-            <button
-              class="btn btn-default custom-btn mr-2 btn-daftar-qurban"
-              @click="showShohibulList"
-            >
+            <button class="btn btn-default custom-btn mr-2 btn-daftar-qurban">
               List Shohibul Qurban
             </button>
           </div>
