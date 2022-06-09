@@ -181,6 +181,20 @@
                     Masukkan alamat lengkap
                   </b-form-invalid-feedback>
                 </div>
+                <label
+                  class="form-check-label form-label"
+                  for="autoSizingCheck2"
+                  v-if="productParam === 'sapi'"
+                >
+                  ** Harga sudah termasuk biaya potong
+                </label>
+                <label
+                  class="form-check-label form-label"
+                  for="autoSizingCheck2"
+                  v-if="productParam === 'kambing'"
+                >
+                  ** Harga belum termasuk biaya potong 75.000 /ekor
+                </label>
                 <div class="form-check">
                   <input
                     class="form-check-input custom-checkbox"
@@ -300,22 +314,25 @@ export default {
           type: "A",
           weight: "390-400",
           age: "+- 2",
-          price: [23800000, 3400000],
-          img: "https://i.imgur.com/D0z65Ic.jpg",
+          price: [24500000, 3500000],
+          img:
+            "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y293fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         },
         {
           type: "B",
           weight: "370-400",
           age: "+- 2",
-          price: [22750000, 3250000],
-          img: "https://i.imgur.com/Q60T9L3.jpg",
+          price: [23450000, 3350000],
+          img:
+            "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y293fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         },
         {
           type: "C",
           weight: "350-370",
           age: "+- 2",
-          price: [21700000, 3100000],
-          img: "https://i.imgur.com/JQOD5TK.jpg",
+          price: [22750000, 3250000],
+          img:
+            "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y293fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         },
       ],
       kambingList: [
@@ -323,22 +340,25 @@ export default {
           type: "A",
           weight: "35-40",
           age: "+- 1",
-          price: "3.2 - 3.5 juta",
-          img: "https://i.imgur.com/57Ok49R.jpg",
+          price: "3.2 - 3.6 juta",
+          img:
+            "https://firebasestorage.googleapis.com/v0/b/qurban-f58a1.appspot.com/o/kambing-A.jpeg?alt=media&token=63681cdb-43f3-4abf-a1bb-42d3d45c225d",
         },
         {
           type: "B",
-          weight: "32-34",
+          weight: "32-35",
           age: "+- 1",
           price: "2.9 - 3.1 juta",
-          img: "https://i.imgur.com/Ys8rLb8.jpg",
+          img:
+            "https://firebasestorage.googleapis.com/v0/b/qurban-f58a1.appspot.com/o/kambing-B.jpeg?alt=media&token=fd62434d-7d13-46e3-9551-3c5a3c5dbdf3",
         },
         {
           type: "C",
-          weight: "28-31",
+          weight: "29-32",
           age: "+- 1",
           price: "2.6 - 2.8 juta",
-          img: "https://i.imgur.com/H6eLPQx.jpg",
+          img:
+            "https://firebasestorage.googleapis.com/v0/b/qurban-f58a1.appspot.com/o/kambing-C.jpeg?alt=media&token=5dc0c41c-6d57-4beb-bc58-4fc0e2555a60",
         },
       ],
 
@@ -563,7 +583,7 @@ export default {
 }
 
 .product-img {
-  height: 280px;
+  height: 250px;
   padding: 0;
   border-radius: 0px;
 }
