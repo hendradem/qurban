@@ -16,6 +16,7 @@ const Sapi = () => {
   const [tipeQurban, setTipeQurban] = useState("");
   const [tipeSapi, setTipeSapi] = useState("");
   const [tipeSapiFull, setTipeSapiFull] = useState("");
+  const [hargaSapi, setHargaSapi] = useState("");
   const [namaShohibul, setNamaShohibul] = useState("");
   const [nomorWAShohibul, setNomorWAShohibul] = useState("");
   const [alamatShohibul, setAlamatShohibul] = useState("");
@@ -71,29 +72,29 @@ const Sapi = () => {
       toast.error("Semua pilihan dan kolom wajib diisi!", {
         position: "bottom-center",
       });
+    } else {
+      const whatsAppAdmin = "6285643172430";
+
+      let url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
+        whatsAppAdmin
+      )}&text=*Assalamu'alaikum%2C%20saya%20mau%20pesan%20hewan%20qurban*%0A%0A*Nama*%20%3A%20${encodeURIComponent(
+        namaShohibul
+      )}%0A*HP*%20%3A%20${encodeURIComponent(
+        nomorWAShohibul
+      )}%0A*Alamat*%20%3A%20${encodeURIComponent(
+        alamatShohibul
+      )}%0A*Tipe%20Hewan*%20%3A%20${encodeURIComponent(
+        tipeSapiFull
+      )}%0A*Tipe%20Qurban*%20%3A%20${encodeURIComponent(
+        tipeQurban
+      )}%0A*Harga*%20%3A%20${encodeURIComponent(
+        hargaSapi
+      )}%0A*Mau%20menerima%20daging*%20%3A%20${encodeURIComponent(
+        isChecked ? "mau" : "tidak"
+      )}`;
+
+      window.open(`${url}`, "_blank");
     }
-
-    const whatsAppAdmin = "6285643172430";
-
-    let url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
-      whatsAppAdmin
-    )}&text=*Assalamu'alaikum%2C%20saya%20mau%20pesan%20hewan%20qurban*%0A%0A*Nama*%20%3A%20${encodeURIComponent(
-      namaShohibul
-    )}%0A*HP*%20%3A%20${encodeURIComponent(
-      nomorWAShohibul
-    )}%0A*Alamat*%20%3A%20${encodeURIComponent(
-      alamatShohibul
-    )}%0A*Tipe%20Hewan*%20%3A%20${encodeURIComponent(
-      tipeSapiFull
-    )}%0A*Tipe%20Qurban*%20%3A%20${encodeURIComponent(
-      tipeQurban
-    )}%0A*Harga*%20%3A%20${encodeURIComponent(
-      0
-    )}%0A*Mau%20menerima%20daging*%20%3A%20${encodeURIComponent(
-      isChecked ? "mau" : "tidak"
-    )}`;
-
-    window.open(`${url}`, "_blank");
   };
 
   return (
@@ -110,6 +111,8 @@ const Sapi = () => {
               type="button"
               onClick={() => {
                 setTipeQurban("Sendiri");
+                setTipeSapi("");
+                setHargaSapi("");
               }}
               className={`${
                 tipeQurban == "Sendiri" ? "bg-gray-100" : "bg-white"
@@ -122,6 +125,8 @@ const Sapi = () => {
               type="button"
               onClick={() => {
                 setTipeQurban("Rombongan");
+                setTipeSapi("");
+                setHargaSapi("");
               }}
               className={`${
                 tipeQurban == "Rombongan" ? "bg-gray-100" : "bg-white"
@@ -154,6 +159,11 @@ const Sapi = () => {
                   } else {
                     setTipeSapi(hewan.code);
                     setTipeSapiFull(hewan.name);
+                    setHargaSapi(
+                      tipeQurban == "Rombongan"
+                        ? hewan.price.rombongan
+                        : hewan.price.sendiri
+                    );
                   }
                 }}
               >

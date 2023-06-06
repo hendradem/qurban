@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   HiShoppingCart,
   HiPresentationChartLine,
   HiMail,
 } from "react-icons/hi";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import { BottomSheet } from "react-spring-bottom-sheet";
 import BottomSheetMain from "../partials/BottomSheet";
+import useBottomSheet from "../../hooks/useBottomSheet";
+import { toast } from "react-hot-toast";
 
 export const HomePage = () => {
   const [open, setOpen] = useState(false);
+  const bottomSheet = useBottomSheet();
+
+  const onToggle = useCallback(() => {
+    bottomSheet.onClose();
+    bottomSheet.onOpen();
+  }, [bottomSheet]);
 
   return (
     <div className="w-full h-full p-4">
@@ -20,7 +25,7 @@ export const HomePage = () => {
       <div className="w-full h-[220px] bg-orange-200 rounded-xl"></div>
       <div className="mt-5 flex flex-row gap-2">
         <div
-          onClick={() => setOpen(true)}
+          onClick={() => onToggle()}
           className="cursor-pointer hover:bg-gray-50 transition w-full py-4 bg-white shadow-sm border border-gray-100 rounded-lg"
         >
           <div className="flex flex-col items-center text-gray-600">
@@ -30,7 +35,15 @@ export const HomePage = () => {
             </span>
           </div>
         </div>
-        <div className="cursor-pointer hover:bg-gray-50 transition w-full py-4 bg-white shadow-sm border border-gray-100 rounded-lg">
+        <div
+          onClick={() => {
+            toast.success(
+              "Link streaming dokumentasi qurban akan aktif pada hari penyembelihan",
+              { position: "bottom-center" }
+            );
+          }}
+          className="cursor-pointer hover:bg-gray-50 transition w-full py-4 bg-white shadow-sm border border-gray-100 rounded-lg"
+        >
           <div className="flex flex-col items-center text-gray-600">
             <HiPresentationChartLine size={28} />
             <span className="mt-1 font-medium text-sm text-gray-500">
@@ -48,7 +61,11 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <BottomSheetMain isOpen />
+      <BottomSheetMain
+        isOpen={bottomSheet.isOpen}
+        onClose={bottomSheet.onClose}
+        onOpen={bottomSheet.onOpen}
+      />
     </div>
   );
 };

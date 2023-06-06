@@ -1,81 +1,69 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import Sapi from "../transactions/Sapi";
 import Kambing from "../transactions/Kambing";
 
 import { FaCrow } from "react-icons/fa";
 import { RiArrowLeftSLine, RiCloseFill } from "react-icons/ri";
+import { toast } from "react-hot-toast";
 
 interface SheetProps {
   isOpen: boolean;
+  onClose: () => void;
+  onOpen: () => void;
 }
 
-const BottomSheetMain: React.FC<SheetProps> = ({ isOpen }) => {
+const BottomSheetMain: React.FC<SheetProps> = ({ isOpen, onClose, onOpen }) => {
   const [open, setOpen] = useState(false);
   const [tipeHewanQurban, setTipeHewanQurban] = useState("");
   const [sheetState, setSheetState] = useState(1);
   const [sheetHeight, setSheetHeight] = useState(0.5);
 
-  useEffect(() => {
-    setOpen(true);
-    setSheetHeight(0.5);
-  }, []);
-
-  function onDismiss() {
-    setOpen(false);
-  }
+  const handleClose = useCallback(() => {
+    onClose();
+  }, [onClose]);
+  const handleOpen = useCallback(() => {
+    onOpen();
+  }, [onOpen]);
+  if (!isOpen) return null;
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>Open</button>
       <BottomSheet
-        open={open}
+        open={isOpen}
         blocking={true}
-        onDismiss={onDismiss}
-        // defaultSnap={({ snapPoints, lastSnap }) =>
-        //   lastSnap ?? Math.min(...snapPoints)
-        // }
+        onDismiss={handleClose}
         snapPoints={({ maxHeight }) => [
           maxHeight - maxHeight / 5,
           maxHeight * sheetHeight,
         ]}
         header={
           <div className="flex justify-between items-center">
-            <button
-              onClick={() => {
-                setSheetState(1);
-                setSheetHeight(0.5);
-              }}
-              className="rounded-full p-2 bg-gray-100"
-            >
-              <RiArrowLeftSLine className="text-lg text-gray-700" />
-            </button>
+            {sheetState !== 1 ? (
+              <button
+                onClick={() => {
+                  setSheetState(1);
+                  setSheetHeight(0.5);
+                }}
+                className="rounded-full p-2 bg-gray-100"
+              >
+                <RiArrowLeftSLine className="text-lg text-gray-700" />
+              </button>
+            ) : (
+              <button className="rounded-full"></button>
+            )}
+
             <h2 className="text-center font-medium text-lg text-gray-700">
               Pilih jenis hewan
             </h2>
             <button
-              onClick={onDismiss}
+              onClick={handleClose}
               className="rounded-full p-2 bg-gray-100"
             >
               <RiCloseFill className="text-lg text-gray-700" />
             </button>
           </div>
         }
-        // footer={
-        //   //   <button
-        //   //     onClick={onDismiss}
-        //   //     className="m-0 bg-blue-500 py-2.5 px-4 rounded-lg font-medium text-white"
-        //   //   >
-        //   //     Konfirmasi hewan qurban
-        //   //   </button>
-
-        //   <button
-        //     onClick={onDismiss}
-        //     className="pointer-events-auto rounded-md px-4 py-2 text-center font-medium shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50"
-        //   >
-        //     Konfirmasi hewan qurban
-        //   </button>
-        // }
       >
         <div className="h-[100%] m-4">
           {sheetState == 1 ? (
@@ -85,9 +73,14 @@ const BottomSheetMain: React.FC<SheetProps> = ({ isOpen }) => {
                   onClick={() => {
                     setTipeHewanQurban("Sapi");
                   }}
-                  className={`flex flex-col items-center w-full h-auto p-4 border border-gray-50 bg-white rounded-md shadow cursor-pointer transition ${
-                    tipeHewanQurban == "Sapi" ? "border border-emerald-200" : ""
-                  }`}
+                  style={{
+                    border: `${
+                      tipeHewanQurban == "Sapi"
+                        ? "1px solid #a7f3d0"
+                        : "1px solid #f9fafb"
+                    }`,
+                  }}
+                  className={`flex flex-col items-center w-full h-auto p-4 border border-gray-50 bg-white rounded-md shadow cursor-pointer transition `}
                 >
                   <div className="rounded-full p-3 bg-emerald-50">
                     <FaCrow className="text-emerald-400 text-xl" />
@@ -105,11 +98,14 @@ const BottomSheetMain: React.FC<SheetProps> = ({ isOpen }) => {
                   onClick={() => {
                     setTipeHewanQurban("Kambing");
                   }}
-                  className={`flex flex-col items-center w-full h-auto p-4 border border-gray-50 bg-white rounded-md shadow cursor-pointer transition ${
-                    tipeHewanQurban == "Kambing"
-                      ? "border border-emerald-200"
-                      : ""
-                  }`}
+                  style={{
+                    border: `${
+                      tipeHewanQurban == "Kambing"
+                        ? "1px solid #a7f3d0"
+                        : "1px solid #f9fafb"
+                    }`,
+                  }}
+                  className={`flex flex-col items-center w-full h-auto p-4 border border-gray-50 bg-white rounded-md shadow cursor-pointer transition`}
                 >
                   <div className="rounded-full p-3 bg-emerald-50">
                     <FaCrow className="text-emerald-400 text-xl" />
@@ -125,10 +121,15 @@ const BottomSheetMain: React.FC<SheetProps> = ({ isOpen }) => {
                 </div>
               </div>
               <button
-                disabled={!tipeHewanQurban}
                 onClick={() => {
-                  setSheetState(2);
-                  setSheetHeight(1);
+                  if (!tipeHewanQurban) {
+                    toast.error("Pilih jenis hewan qurban terlebih dahulu", {
+                      position: "bottom-center",
+                    });
+                  } else {
+                    setSheetState(2);
+                    setSheetHeight(1);
+                  }
                 }}
                 className="w-full mt-4 shadow-none border-0 bg-black py-3 px-4 rounded-lg font-medium text-white"
               >
