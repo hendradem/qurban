@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import Skeleton from "react-loading-skeleton";
-import toast, { Toaster } from "react-hot-toast";
-import { useCurrency } from "../../hooks/useCurrency";
+import toast from "react-hot-toast";
+import convertCurrency from "../../libs/currency";
 
-import {
-  HiMapPin,
-  HiUser,
-  HiUsers,
-  HiPhone,
-  HiChevronRight,
-  HiOutlineCheckCircle,
-} from "react-icons/hi2";
+import { HiMapPin, HiUser, HiPhone } from "react-icons/hi2";
 
 const Kambing = () => {
-  const [tipeQurban, setTipeQurban] = useState("");
   const [tipeKambing, setTipeKambing] = useState("");
   const [tipeKambingFull, setTipeKambingFull] = useState("");
   const [hargaKambing, setHargaKambing] = useState("");
@@ -133,9 +124,9 @@ const Kambing = () => {
                           berat {hewan.spec.berat}KG
                         </span>
                         <p className="bg-[#F9FAFB] text-[#4B5563] border border-[#EBEDEE] text-xs font-medium mr-2 px-2.5 py-0.5 rounded-md ">
-                          {useCurrency(hewan.price.min) +
+                          {convertCurrency(hewan.price.min) +
                             " - " +
-                            useCurrency(hewan.price.max)}
+                            convertCurrency(hewan.price.max)}
                         </p>
                       </div>
                     </div>
