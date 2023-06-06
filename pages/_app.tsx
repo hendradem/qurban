@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
-import TransactionModal from "../components/modals/TransactionModal";
 
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
@@ -13,7 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
       <Toaster />
-      <TransactionModal />
       <Layout>
         <Component {...pageProps} />
       </Layout>
