@@ -19,7 +19,7 @@ const Kambing = () => {
       code: "A",
       price: {
         min: "3400000",
-        max: "3700000",
+        max: "3600000",
       },
       spec: {
         berat: "35-40",
@@ -40,7 +40,7 @@ const Kambing = () => {
       name: "Kambing tipe standar C",
       code: "C",
       price: {
-        min: "2700000",
+        min: "2600000",
         max: "2900000",
       },
       spec: {
@@ -131,6 +131,7 @@ const Kambing = () => {
                       </div>
                     </div>
                   </div>
+
                   <div className="hidden w-[0%] lg:w-[10%] lg:flex items-center justify-center">
                     <button
                       className={`rounded-full p-2.5 border  ${
@@ -157,7 +158,7 @@ const Kambing = () => {
           </div>
           <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
             <div className="sm:col-span-3">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900 ">
                 Nama lengkap
               </label>
               <div className="relative">
@@ -169,14 +170,14 @@ const Kambing = () => {
                     setNamaShohibul(e.target.value);
                   }}
                   type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5 "
                   placeholder="Nama lengkap anda"
                 />
               </div>
             </div>
 
             <div className="sm:col-span-3">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900 ">
                 Nomor Whatsapp
               </label>
               <div className="relative">
@@ -188,14 +189,14 @@ const Kambing = () => {
                     setNomorWAShohibul(e.target.value);
                   }}
                   type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  "
                   placeholder="Nomor WA aktif "
                 />
               </div>
             </div>
 
             <div className="sm:col-span-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900 ">
                 Alamat lengkap
               </label>
               <div className="relative">
@@ -207,7 +208,7 @@ const Kambing = () => {
                     setAlamatShohibul(e.target.value);
                   }}
                   type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5 "
                   placeholder="Alamat lengkap anda"
                 />
               </div>

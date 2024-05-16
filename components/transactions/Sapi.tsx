@@ -20,8 +20,8 @@ const Sapi = () => {
       name: "Sapi tipe premium A",
       code: "A",
       price: {
-        sendiri: "25550000",
-        rombongan: "3650000",
+        sendiri: "24500000",
+        rombongan: "3500000",
       },
       spec: {
         umur: "2",
@@ -32,8 +32,8 @@ const Sapi = () => {
       name: "Sapi tipe medium B",
       code: "B",
       price: {
-        sendiri: "24500000",
-        rombongan: "3500000",
+        sendiri: "23800000",
+        rombongan: "3400000",
       },
       spec: {
         umur: "2",
@@ -44,8 +44,8 @@ const Sapi = () => {
       name: "Sapi tipe standar C",
       code: "C",
       price: {
-        sendiri: "23450000",
-        rombongan: "3350000",
+        sendiri: "23100000",
+        rombongan: "3300000",
       },
       spec: {
         umur: "2",
@@ -231,7 +231,7 @@ const Sapi = () => {
           </div>
           <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
             <div className="sm:col-span-3">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900 ">
                 Nama lengkap
               </label>
               <div className="relative">
@@ -243,7 +243,7 @@ const Sapi = () => {
                     setNamaShohibul(e.target.value);
                   }}
                   type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  "
                   placeholder="Nama lengkap anda"
                 />
               </div>
@@ -262,14 +262,14 @@ const Sapi = () => {
                     setNomorWAShohibul(e.target.value);
                   }}
                   type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5"
                   placeholder="Nomor WA aktif "
                 />
               </div>
             </div>
 
             <div className="sm:col-span-6">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label className="block mb-2 text-sm font-medium text-gray-900 ">
                 Alamat lengkap
               </label>
               <div className="relative">
@@ -281,7 +281,7 @@ const Sapi = () => {
                     setAlamatShohibul(e.target.value);
                   }}
                   type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5  "
                   placeholder="Alamat lengkap anda"
                 />
               </div>
