@@ -22,7 +22,7 @@ export const HomePage = () => {
       <p>.</p>
       <div>
         <p className="mb-8 font-bold text-[30px] text-gray-700">
-          Website Qurban <br /> MPD-MPR 1444H
+          Website Qurban <br /> MPD-MPR 1446H
         </p>
         <div className="flex flex-row gap-2">
           <div

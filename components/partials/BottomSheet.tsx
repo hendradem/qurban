@@ -3,7 +3,7 @@ import { BottomSheet } from "react-spring-bottom-sheet";
 import Sapi from "../transactions/Sapi";
 import Kambing from "../transactions/Kambing";
 
-import { FaCrow } from "react-icons/fa";
+import { GiGoat } from "react-icons/gi";
 import { RiArrowLeftSLine, RiCloseFill } from "react-icons/ri";
 import { toast } from "react-hot-toast";
 
@@ -83,7 +83,7 @@ const BottomSheetMain: React.FC<SheetProps> = ({ isOpen, onClose, onOpen }) => {
                   className={`flex flex-col items-center w-full h-auto p-4 border border-gray-50 bg-white rounded-md shadow cursor-pointer transition `}
                 >
                   <div className="rounded-full p-3 bg-emerald-50">
-                    <FaCrow className="text-emerald-400 text-xl" />
+                    <GiGoat className="text-emerald-400 text-xl" />
                   </div>
                   <div className="text-center">
                     <h2 className="mt-2 font-medium text-gray-700 text-md">
@@ -108,7 +108,7 @@ const BottomSheetMain: React.FC<SheetProps> = ({ isOpen, onClose, onOpen }) => {
                   className={`flex flex-col items-center w-full h-auto p-4 border border-gray-50 bg-white rounded-md shadow cursor-pointer transition`}
                 >
                   <div className="rounded-full p-3 bg-emerald-50">
-                    <FaCrow className="text-emerald-400 text-xl" />
+                    <GiGoat className="text-emerald-400 text-xl" />
                   </div>
                   <div className="text-center">
                     <h2 className="mt-2 font-medium text-gray-700 text-md">

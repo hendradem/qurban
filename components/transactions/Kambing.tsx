@@ -15,7 +15,7 @@ const Kambing = () => {
 
   const dataHewan = [
     {
-      name: "Kambing tipe premium A",
+      name: "Kambing tipe premium",
       code: "A",
       price: {
         min: "3400000",
@@ -26,7 +26,7 @@ const Kambing = () => {
       },
     },
     {
-      name: "Kambing tipe medium B",
+      name: "Kambing tipe medium",
       code: "B",
       price: {
         min: "3000000",
@@ -37,7 +37,7 @@ const Kambing = () => {
       },
     },
     {
-      name: "Kambing tipe standar C",
+      name: "Kambing tipe standar",
       code: "C",
       price: {
         min: "2600000",
@@ -145,6 +145,10 @@ const Kambing = () => {
               </div>
             );
           })}
+
+          <p className="text-sm text-gray-600 mt-2">
+            *Belum termasuk biaya penyembelihan sebesar Rp100.000/ekor
+          </p>
         </div>
 
         <div className="user-information mt-8">

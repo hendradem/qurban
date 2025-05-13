@@ -17,7 +17,7 @@ const Sapi = () => {
 
   const dataHewan = [
     {
-      name: "Sapi tipe premium A",
+      name: "Sapi tipe A - premium",
       code: "A",
       price: {
         sendiri: "24500000",
@@ -29,7 +29,7 @@ const Sapi = () => {
       },
     },
     {
-      name: "Sapi tipe medium B",
+      name: "Sapi tipe B -  medium",
       code: "B",
       price: {
         sendiri: "23800000",
@@ -41,7 +41,7 @@ const Sapi = () => {
       },
     },
     {
-      name: "Sapi tipe standar C",
+      name: "Sapi tipe C - standar",
       code: "C",
       price: {
         sendiri: "23100000",
@@ -218,6 +218,10 @@ const Sapi = () => {
               </div>
             );
           })}
+
+          <p className="text-sm text-gray-600 mt-2">
+            *Belum termasuk biaya penyembelihan sebesar Rp100.000/ekor
+          </p>
         </div>
 
         <div className="user-information mt-8">
